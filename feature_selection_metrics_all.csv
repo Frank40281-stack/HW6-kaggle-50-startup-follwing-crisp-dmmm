@@ -1,0 +1,26 @@
+Model,Num Features,Features,RMSE,R-squared
+Linear Regression,1,[R&D Spend],8274.86801822599,0.9464587607787219
+Linear Regression,2,"[R&D Spend, Marketing Spend]",8198.797190788488,0.9474386447268488
+Linear Regression,3,"[R&D Spend, Marketing Spend, State_New York]",8309.05968348172,0.9460153830071389
+Linear Regression,4,"[R&D Spend, Marketing Spend, State_New York, State_Florida]",8409.916714488052,0.9446968769428332
+Linear Regression,5,"[R&D Spend, Marketing Spend, State_New York, State_Florida, State_California]",9137.990152792128,0.9347068473282827
+Ridge Regression,1,[R&D Spend],8274.86801826931,0.9464587607781614
+Ridge Regression,2,"[R&D Spend, Marketing Spend]",8198.797190877156,0.9474386447257119
+Ridge Regression,3,"[R&D Spend, Marketing Spend, State_New York]",8296.656524356013,0.9461764313255805
+Ridge Regression,4,"[R&D Spend, Marketing Spend, State_New York, State_Florida]",8388.925729890174,0.9449726033960693
+Ridge Regression,5,"[R&D Spend, Marketing Spend, State_New York, State_Florida, State_California]",9105.70511241376,0.9351674011715563
+Lasso Regression,1,[R&D Spend],8274.8680202607,0.9464587607523914
+Lasso Regression,2,"[R&D Spend, Marketing Spend]",8198.797186515847,0.9474386447816314
+Lasso Regression,3,"[R&D Spend, Marketing Spend, State_New York]",8308.41368572359,0.9460237768777383
+Lasso Regression,4,"[R&D Spend, Marketing Spend, State_New York, State_Florida]",8408.662419403498,0.9447133720556733
+Lasso Regression,5,"[R&D Spend, Marketing Spend, State_New York, State_Florida, State_California]",9136.334353465374,0.9347305073588748
+Random Forest,1,[R&D Spend],8620.965160747392,0.9418863641692254
+Random Forest,2,"[R&D Spend, Marketing Spend]",6695.957476189918,0.9649416363605452
+Random Forest,3,"[R&D Spend, Marketing Spend, State_New York]",6427.321334068911,0.9676982320023134
+Random Forest,4,"[R&D Spend, Marketing Spend, State_New York, State_Florida]",6671.525913785537,0.9651970047642617
+Random Forest,5,"[R&D Spend, Marketing Spend, State_New York, State_Florida, State_California]",7174.692516784693,0.9597493540562494
+Gradient Boosting,1,[R&D Spend],11967.854906505952,0.8880049318903972
+Gradient Boosting,2,"[R&D Spend, Marketing Spend]",7718.665303189584,0.9534145080094218
+Gradient Boosting,3,"[R&D Spend, Marketing Spend, State_New York]",7910.895067295904,0.9510652340603698
+Gradient Boosting,4,"[R&D Spend, Marketing Spend, State_New York, State_Florida]",8294.139960215973,0.94620907819238
+Gradient Boosting,5,"[R&D Spend, Marketing Spend, State_New York, State_Florida, State_California]",8838.165218076727,0.9389211995376429

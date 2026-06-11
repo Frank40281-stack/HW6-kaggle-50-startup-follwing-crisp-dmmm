@@ -1,0 +1,47 @@
+<mxfile host="app.diagrams.net" modified="2026-06-11T03:26:22.000Z" agent="5.0" version="21.0.0" type="device">
+  <diagram id="crisp-dm-workflow" name="CRISP-DM Startup Profit Workflow">
+    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Nodes -->
+        <mxCell id="node1" value="1. 商業理解 (Business Understanding)&#xa;預測新創獲利 / 指引預算分配" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="280" y="40" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="node2" value="2. 資料理解 (Data Understanding)&#xa;讀取 50_Startups / EDA 相關性分析" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="280" y="140" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="node3" value="3. 資料準備 (Data Preparation)&#xa;切分 80/20 / StandardScaler &amp; OneHotEncoder" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="280" y="240" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="node4" value="4. 建立模型 (Modeling)&#xa;封裝 5 種迴歸模型至 Pipeline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="280" y="340" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="node5" value="5. 模型評估 (Evaluation)&#xa;計算指標 / 進行 SFS 前向特徵選擇" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="280" y="440" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="node6" value="6. 部署 (Deployment)&#xa;儲存 best_model.joblib / 啟動 app.py 儀表板" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="280" y="540" width="240" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Edges -->
+        <mxCell id="edge1" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="node1" target="node2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="node2" target="node3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="node3" target="node4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="node4" target="node5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge5" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="node5" target="node6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
