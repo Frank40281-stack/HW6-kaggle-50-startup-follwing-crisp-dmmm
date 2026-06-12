@@ -6,6 +6,20 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import joblib
 from sklearn.metrics import r2_score, mean_absolute_error
+import logging
+
+# Configure logging to write both to console and streamlit_app.log
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("streamlit_app.log", encoding="utf-8"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
+
+logger.info("Streamlit dashboard loaded / refreshed")
 
 # -----------------------------------------------------------------------------
 # PAGE CONFIG & CUSTOM CSS (Premium Theme)
@@ -360,6 +374,7 @@ with tab3:
             
             # Predict
             pred_profit = model.predict(input_df)[0]
+            logger.info(f"Prediction requested - Inputs: R&D={rd_spend}, Admin={admin_spend}, Marketing={marketing_spend}, State={state} -> Predicted Profit: ${pred_profit:,.2f}")
             
             # Format and output results in a beautiful glowing box
             st.markdown(f"""

@@ -11,6 +11,18 @@ from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import joblib
+import logging
+
+# Configure logging to write both to console and solve_50_startups.log
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("solve_50_startups.log", encoding="utf-8"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
 
 def main():
     print("=" * 80)
@@ -20,6 +32,7 @@ def main():
     # -------------------------------------------------------------------------
     # PHASE 1: BUSINESS UNDERSTANDING
     # -------------------------------------------------------------------------
+    logger.info("Starting Phase 1: Business Understanding")
     print("\n--- PHASE 1: BUSINESS UNDERSTANDING ---")
     print("Objective: Predict startup profit based on R&D Spend, Administration Spend,")
     print("           Marketing Spend, and location (State).")
@@ -30,13 +43,16 @@ def main():
     # -------------------------------------------------------------------------
     # PHASE 2: DATA UNDERSTANDING
     # -------------------------------------------------------------------------
+    logger.info("Starting Phase 2: Data Understanding")
     print("\n--- PHASE 2: DATA UNDERSTANDING ---")
     csv_path = "50_Startups.csv"
     if not os.path.exists(csv_path):
+        logger.error(f"Error: {csv_path} not found.")
         print(f"Error: {csv_path} not found. Please run the download command first.")
         return
 
     df = pd.read_csv(csv_path)
+    logger.info(f"Dataset Loaded. Shape: {df.shape} (50 rows, 5 columns)")
     print(f"Dataset Loaded. Shape: {df.shape} (50 rows, 5 columns)")
     print("\nFirst 5 rows of the dataset:")
     print(df.head())
@@ -54,6 +70,7 @@ def main():
     print(df['State'].unique())
 
     # Visualizing relationships and distributions (EDA)
+    logger.info("Generating Exploratory Data Analysis (EDA) visualizations...")
     print("\nGenerating Exploratory Data Analysis (EDA) visualizations...")
     sns.set_theme(style="whitegrid")
     fig, axes = plt.subplots(2, 2, figsize=(16, 12))
@@ -76,12 +93,14 @@ def main():
     
     plt.tight_layout()
     plt.savefig('eda_plots.png', dpi=300)
+    logger.info("EDA plots saved successfully to 'eda_plots.png'.")
     print("EDA plots saved successfully to 'eda_plots.png'.")
     plt.close()
 
     # -------------------------------------------------------------------------
     # PHASE 3: DATA PREPARATION
     # -------------------------------------------------------------------------
+    logger.info("Starting Phase 3: Data Preparation")
     print("\n--- PHASE 3: DATA PREPARATION ---")
     # Separating features and target
     X = df.drop(columns=['Profit'])
@@ -92,6 +111,7 @@ def main():
 
     # Split dataset into training and test sets (80% train, 20% test)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    logger.info(f"Training set size: {X_train.shape[0]} samples, Testing set size: {X_test.shape[0]} samples")
     print(f"Training set size: {X_train.shape[0]} samples")
     print(f"Testing set size: {X_test.shape[0]} samples")
 
@@ -110,6 +130,7 @@ def main():
     # -------------------------------------------------------------------------
     # PHASE 4: MODELING & PHASE 5: EVALUATION
     # -------------------------------------------------------------------------
+    logger.info("Starting Phase 4 & 5: Modeling & Evaluation")
     print("\n--- PHASE 4 & 5: MODELING & EVALUATION ---")
     
     # Define models to train
@@ -150,6 +171,7 @@ def main():
             'MAE': mae,
             'RMSE': rmse
         })
+        logger.info(f"Trained {name} -> R2 Score: {r2:.4f} | MAE: {mae:.2f} | RMSE: {rmse:.2f}")
         print(f"Trained {name:20} -> R2 Score: {r2:.4f} | MAE: {mae:.2f} | RMSE: {rmse:.2f}")
 
     # Display comparison
@@ -159,11 +181,13 @@ def main():
     
     # Save comparison to file
     results_df.to_csv("evaluation_metrics.csv", index=False)
+    logger.info("Evaluation metrics saved to 'evaluation_metrics.csv'.")
     print("Evaluation metrics saved to 'evaluation_metrics.csv'.")
 
     # Select the best model based on R2 Score
     best_model_name = results_df.iloc[0]['Model']
     best_pipeline = trained_pipelines[best_model_name]
+    logger.info(f"Winner: {best_model_name} is the best performing model!")
     print(f"\nWinner: {best_model_name} is the best performing model!")
 
     # Plot predictions vs actuals for the best model
@@ -186,6 +210,7 @@ def main():
     # -------------------------------------------------------------------------
     # FEATURE SELECTION & PERFORMANCE ANALYSIS (ALL IN ONE)
     # -------------------------------------------------------------------------
+    logger.info("Starting SFS Feature Selection & Performance Analysis")
     print("\n--- FEATURE SELECTION & PERFORMANCE ANALYSIS (ALL IN ONE) ---")
     
     # We will use the exact train_test_split (test_size=0.2, random_state=0)
@@ -291,6 +316,7 @@ def main():
     
     import shutil
     shutil.copyfile('feature_selection_performance_allinone.png', 'feature_selection_performance_allinone.pnd')
+    logger.info("All-in-one feature selection performance plots generated and saved.")
     print("All-in-one feature selection performance plot saved to 'feature_selection_performance_allinone.png' & 'feature_selection_performance_allinone.pnd'.")
     
     # Save comparison dataframe to CSV
@@ -300,11 +326,13 @@ def main():
     # -------------------------------------------------------------------------
     # PHASE 6: DEPLOYMENT
     # -------------------------------------------------------------------------
+    logger.info("Starting Phase 6: Deployment")
     print("\n--- PHASE 6: DEPLOYMENT ---")
     
     # Save the pipeline
     model_filename = 'best_model.joblib'
     joblib.dump(best_pipeline, model_filename)
+    logger.info(f"Best model pipeline saved as '{model_filename}'")
     print(f"Best model pipeline (preprocessors + model) successfully saved as '{model_filename}'.")
     
     # Sample prediction demonstration
@@ -318,10 +346,12 @@ def main():
     
     loaded_pipeline = joblib.load(model_filename)
     prediction = loaded_pipeline.predict(sample_data)[0]
+    logger.info(f"Deployment Test prediction result: ${prediction:,.2f}")
     print("Sample Input:")
     print(sample_data.to_string(index=False))
     print(f"Predicted Profit: ${prediction:,.2f}")
     
+    logger.info("CRISP-DM PIPELINE RUN COMPLETED SUCCESSFULLY")
     print("\n" + "=" * 80)
     print("                CRISP-DM PIPELINE RUN COMPLETED SUCCESSFULLY")
     print("=" * 80)
