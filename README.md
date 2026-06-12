@@ -84,3 +84,14 @@ We performed **Sequential Forward Feature Selection (SFS)** to identify the opti
     ```bash
     streamlit run app.py
     ```
+
+---
+
+## 📝 Logging System
+
+The application has a built-in logging system that logs model training phases and user actions. Both logs are output to the console and to dedicated local log files:
+
+*   **`solve_50_startups.log`**: Generated when running the modeling script. It logs the shape of the dataset, training split dimensions, performance metrics of all 5 algorithms, the selected winner, and feature selection updates.
+*   **`streamlit_app.log`**: Generated when running the Streamlit dashboard. It logs the dashboard initialization status and every single prediction request (including the input expenses, region, and predicted profit).
+
+These log files are ignored by git (`.gitignore`) to prevent cluttering the repository.
