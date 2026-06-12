@@ -1,3 +1,4 @@
+![50 Startups CRISP-DM 獲利預測分析報告](Gemini_Generated_Image_b3ns8db3ns8db3ns.png)
 # 🚀 50 Startups Profit Prediction System (CRISP-DM Framework)
 
 This repository contains the complete implementation of the **CRISP-DM (Cross-Industry Standard Process for Data Mining)** methodology for predicting startup profits based on the 50 Startups dataset. It evaluates multiple machine learning models and performs Sequential Forward Feature Selection to find the optimal features.
