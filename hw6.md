@@ -1,5 +1,9 @@
 # 🚀 機器學習作業：50 Startups 獲利預測分析報告 (CRISP-DM 流程)
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://hw6-kaggle-50-startup-follwing-crisp-dmmm-krl4jythtzkxipuhodzu.streamlit.app/)
+
+> **線上展示平台 (Live Demo)**: [https://hw6-kaggle-50-startup-follwing-crisp-dmmm-krl4jythtzkxipuhodzu.streamlit.app/](https://hw6-kaggle-50-startup-follwing-crisp-dmmm-krl4jythtzkxipuhodzu.streamlit.app/)
+
 本專案基於 **CRISP-DM（跨行業數據挖掘標準流程）** 框架，利用 `50_Startups.csv` 數據集，對新創公司的各項支出（研發費用、行政管理、行銷費用）與地理位置進行特徵選擇與機器學習建模，精準預測其最終利潤（Profit）。
 
 ---
